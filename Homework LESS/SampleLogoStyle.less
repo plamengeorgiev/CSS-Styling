@@ -1,0 +1,286 @@
+﻿@gradient-color-one: #d292fd;
+@gradient-color-two: #9215f2;
+@input-background-color: #B35EF3;
+@button-background-color: #B35EF3;
+@body-text-color: white;
+@body-background-color: #9215F2;
+@sub-nav-list-BGcolor: rgba(179, 94, 243, 0.9);
+@border-color: #603382;
+@button-hover-color: #8949B9;
+@link-color: #D4A3F8;
+@border-color: #000000;
+@nav-link-color: white;
+@nav-link-hover-color: #A8A8A8;
+@aside-link-color: #AAAAAA;
+@aside-strong-color: #CCCCCC;
+@aside-em-color: #CCCCCC;
+
+.header-gradient(@first-color, @second-color) {
+    background: @first-color; /* Old browsers */
+    background: -moz-linear-gradient(top, @first-color 0%, @second-color 93%, @second-color 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@first-color), color-stop(93%,@second-color), color-stop(100%,@second-color)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, @first-color 0%,@second-color 93%,@second-color 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, @first-color 0%,@second-color 93%,@second-color 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, @first-color 0%,@second-color 93%,@second-color 100%); /* IE10+ */
+    background: linear-gradient(to bottom, @first-color 0%,@second-color 93%,@second-color 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@first-color', endColorstr='@second-color',GradientType=0 ); /* IE6-9 */
+}
+
+.clearfix {
+    zoom: 1;
+
+    &:after {
+        display: block;
+        content: "";
+        height: 0;
+        clear: both;
+    }
+}
+
+
+body {
+    background-color: @body-background-color;
+    color: @body-text-color;
+    font: 14px normal Arial;
+
+    header {
+        .header-gradient(@gradient-color-one, @gradient-color-two);
+
+        div#header-container {
+            &:extend(.clearfix all);
+
+            div#logo-container {
+                float: left;
+                position: relative;
+            }
+
+            div#reg-form-container {
+                float: right;
+                position: relative;
+                right: 5%;
+                top: 50%;
+
+                div {
+                    text-align: right;
+
+                    label {
+                        margin: 5px;
+                        width: 50px;
+                    }
+
+                    input {
+                        background-color: @input-background-color;
+                        border: 1px solid @border-color;
+                        border-radius: 20px 20px 20px 20px;
+                        margin: 5px;
+                        padding: 2px 5px;
+                        width: 130px;
+                    }
+                }
+
+                button {
+                    background-color: @button-background-color;
+                    border: 1px outset @border-color;
+                    border-radius: 20px 20px 20px 20px;
+                    color: @body-text-color;
+                    font-weight: bold;
+                    margin-left: auto;
+                    margin-right: auto;
+                    padding: 5px 8px;
+
+                    &:hover {
+                        background-color: @button-hover-color;
+                        border-style: inset;
+                    }
+                }
+            }
+        }
+
+        nav {
+            &:extend(.clearfix all);
+            border: 2px solid @border-color;
+            border-radius: 20px 20px 20px 20px;
+            display: inline-block;
+            margin: 20px;
+            padding: 12px;
+            width: 75%;
+
+
+
+            ul {
+                &:extend(.clearfix all);
+
+                &.nav-list {
+                    list-style-type: none;
+                }
+
+                li {
+                    float: left;
+                    margin: 0;
+
+                    a {
+                        color: @nav-link-color;
+                        font: 1.4em normal Arial;
+                        padding: 0 10px;
+                        text-decoration: none;
+
+                        &.selected {
+                            font-weight: bold;
+                        }
+                    }
+
+                    &:hover > a {
+                        color: @nav-link-hover-color;
+                        text-decoration: underline;
+
+                        & + ul {
+                            display: block;
+                        }
+                    }
+
+                    ul.sub-nav-list {
+                        &:extend(.clearfix all);
+                        background-color: @sub-nav-list-BGcolor;
+                        border-radius: 5px 5px 5px 5px;
+                        display: none;
+                        position: absolute;
+                    }
+
+                    ul {
+                        li {
+                            border-bottom: 1px solid @border-color;
+                            float: none;
+                            margin: 0 15px;
+                            padding: 10px 0;
+
+                            &:last-of-type {
+                                border-bottom: medium none;
+                            }
+
+                            & > a {
+                                font-size: 1.2em;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    section {
+        &:extend(.clearfix all);
+        float: left;
+        width: 75%;
+
+        article {
+            border: 1px solid @border-color;
+            border-radius: 20px 20px 20px 20px;
+            margin: 20px;
+            padding: 20px;
+
+            header {
+                background: none repeat scroll 0 0 transparent;
+                padding: 5px;
+
+                h1 {
+                    font-size: 1.4em;
+                    padding: 0;
+                }
+            }
+
+            footer {
+                padding: 5px;
+
+                p {
+                    font-size: 16px;
+                    font-weight: normal;
+                    text-align: right;
+
+                    time {
+                        font-family: Consolas,'Lucida Console','DejaVu Sans Mono',monospace;
+                    }
+
+                    a {
+                        text-decoration: none;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    aside {
+        &:extend(.clearfix all);
+        float: left;
+        margin: 20px;
+        width: 20%;
+
+        & > ul {
+            list-style-type: none;
+
+            & > li {
+                border: 1px solid @border-color;
+                border-radius: 5px 5px 5px 5px;
+                margin: 15px 0;
+                padding: 15px;
+
+                h2 {
+                    font-size: 1.1em;
+                    font-weight: bold;
+                }
+
+                p {
+                    font-size: 14px;
+                    margin: 10px 5px;
+
+                    a {
+                        color: @aside-link-color;
+                        text-decoration: none;
+                    }
+
+                    strong {
+                        color: @aside-strong-color;
+                        font-style: normal;
+                        font-weight: bold;
+                    }
+
+                    em {
+                        color: @aside-em-color;
+                        font-style: italic;
+                        font-weight: normal;
+                    }
+                }
+
+                ul {
+                    list-style-type: none;
+                    margin: 10px 0;
+                    padding-left: 5px;
+
+                    li {
+                        background: url("images/li-dot.png") no-repeat scroll 0 50% transparent;
+                        margin: 5px 0 0 10px;
+                        padding-left: 25px;
+                    }
+                }
+            }
+        }
+    }
+
+    footer {
+        clear: both;
+        padding: 15px 0 25px;
+        text-align: center;
+
+        p {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    }
+
+    p a {
+        color: @link-color;
+    }
+}
